@@ -15,6 +15,7 @@ private:
 
 	// The grid (will hold everything else)
 	Grid m_Grid;
+	Grid m_background;
 
 	// Private functions for internal use only:
 private:

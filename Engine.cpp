@@ -10,6 +10,7 @@ using namespace sf;
 
 Engine::Engine()
 	: m_Grid(9,10,64.0f,64.0f) // Set your grid size here!
+	,m_background(9, 10, 64.0f, 64.0f)
 {
 	// Get the game screen resolution
 	// and creste an SFML window and View
@@ -58,7 +59,17 @@ Engine::Engine()
 				m_Grid.SetObject(x, y, new GridSprite(TextureHolder::GetTexture("graphics/dirt.png"), GridObject::DIRT));
 		}
 	}
+
+	m_background.SetPosition(gridPosition);
+	for (int x = 0; x < m_Grid.GRID_SIZE_X; ++x)
+	{
+		for (int y = 0; y < m_Grid.GRID_SIZE_Y; ++y)
+		{
+				m_background.SetObject(x, y, new GridSprite(TextureHolder::GetTexture("graphics/background_dirt.png"), GridObject::DIRT));
+		}
+	}
 }
+
 
 
 void Engine::run()

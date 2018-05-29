@@ -11,6 +11,9 @@ void Engine::draw()
 	// switch to main view
 	m_Window.setView(m_MainView);
 
+	//background
+	m_background.draw(m_Window);
+
 	// draw the grid
 	m_Grid.draw(m_Window);
 
