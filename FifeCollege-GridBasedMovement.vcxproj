@@ -153,6 +153,8 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Boulder.cpp" />
+    <ClCompile Include="Diamond.cpp" />
     <ClCompile Include="Draw.cpp" />
     <ClCompile Include="Engine.cpp" />
     <ClCompile Include="Grid.cpp" />
@@ -168,6 +170,8 @@
     <ClCompile Include="Update.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Boulder.h" />
+    <ClInclude Include="Diamond.h" />
     <ClInclude Include="Engine.h" />
     <ClInclude Include="Grid.h" />
     <ClInclude Include="GridObject.h" />

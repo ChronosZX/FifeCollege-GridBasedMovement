@@ -2,11 +2,14 @@
 #include "Engine.h"
 #include "GridSprite.h"
 #include "Player.h"
+#include "Diamond.h"
+#include "Boulder.h"
+
 
 using namespace sf;
 
 Engine::Engine()
-	: m_Grid(15,15,64.0f,64.0f) // Set your grid size here!
+	: m_Grid(9,10,64.0f,64.0f) // Set your grid size here!
 {
 	// Get the game screen resolution
 	// and creste an SFML window and View
@@ -35,16 +38,16 @@ Engine::Engine()
 	m_Grid.SetObject(0, 0, new Player(TextureHolder::GetTexture("graphics/player_down_01.png")));
 	
 	// create exit
-	m_Grid.SetObject(9, 9, new GridSprite(TextureHolder::GetTexture("graphics/exit_locked.png"), GridObject::EXIT));
+	m_Grid.SetObject(8, 9, new GridSprite(TextureHolder::GetTexture("graphics/exit_locked.png"), GridObject::EXIT));
 
 	// create diamonds
-	m_Grid.SetObject(1, 4, new GridSprite(TextureHolder::GetTexture("graphics/diamond.png"), GridObject::DIAMOND));
-	m_Grid.SetObject(1, 6, new GridSprite(TextureHolder::GetTexture("graphics/diamond.png"), GridObject::DIAMOND));
-	m_Grid.SetObject(3, 2, new GridSprite(TextureHolder::GetTexture("graphics/diamond.png"), GridObject::DIAMOND));
+	m_Grid.SetObject(1, 4, new Diamond(TextureHolder::GetTexture("graphics/diamond.png")));
+	m_Grid.SetObject(1, 6, new Diamond(TextureHolder::GetTexture("graphics/diamond.png")));
+	m_Grid.SetObject(3, 2, new Diamond(TextureHolder::GetTexture("graphics/diamond.png")));
 
 	// create boulders
-	m_Grid.SetObject(1, 3, new GridSprite(TextureHolder::GetTexture("graphics/boulder.png"), GridObject::BOULDER));
-	m_Grid.SetObject(7, 7, new GridSprite(TextureHolder::GetTexture("graphics/boulder.png"), GridObject::BOULDER));
+	m_Grid.SetObject(1, 3, new Boulder(TextureHolder::GetTexture("graphics/boulder.png")));
+	m_Grid.SetObject(7, 7, new Boulder(TextureHolder::GetTexture("graphics/boulder.png")));
 
 	// Fill the rest of our grid with dirt
 	for (int x = 0; x < m_Grid.GRID_SIZE_X; ++x)
@@ -56,6 +59,7 @@ Engine::Engine()
 		}
 	}
 }
+
 
 void Engine::run()
 {
