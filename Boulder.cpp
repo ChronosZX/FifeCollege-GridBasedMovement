@@ -14,7 +14,7 @@ Boulder::Boulder(sf::Texture& _texture, GridObject::Type _type /* = GridObject::
 void Boulder::update(const float& _dtAsSeconds)
 {
 	// TODO: only do this every x seconds
-
+	
 	{
 		int targetX = m_gridX;
 		int targetY = m_gridY + 1;

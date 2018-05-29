@@ -7,6 +7,7 @@ class Boulder : public GridSprite
 {
 public:
 
+
 	// Constructor
 	Boulder(sf::Texture& _texture, GridObject::Type _type = GridObject::BOULDER);
 
