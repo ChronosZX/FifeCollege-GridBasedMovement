@@ -20,30 +20,15 @@ void Boulder::update(const float& _dtAsSeconds)
 		int targetY = m_gridY + 1;
 
 		GridObject* targetCellObject = m_grid->GetOjbect(targetX, targetY);
-		
 
 		if (targetCellObject == nullptr)
 		{
-			counter += _dtAsSeconds;
-			if (counter >= 0.5f)
-			{
-				// fall
-				m_grid->MoveObject(m_gridX, m_gridY++, targetX, targetY, true);
-				counter = 0;
-			}
+			// fall
+			m_grid->MoveObject(m_gridX, m_gridY++, targetX, targetY, true);
 		}
 		else if (targetCellObject->GetType() == GridObject::PLAYER)
 		{
-			counter += _dtAsSeconds;
-			if (counter >= 0.5f)
-			{
-				// fall
-				m_grid->MoveObject(m_gridX, m_gridY++, targetX, targetY, false);
-				counter = 0;
-			}
-			
-
+			// CRUSH
 		}
 	}
-
 }

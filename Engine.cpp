@@ -19,7 +19,7 @@ Engine::Engine()
 	resolution.y = VideoMode::getDesktopMode().height;
 
 	m_Window.create(VideoMode(resolution.x, resolution.y),
-		"BoulderDash",
+		"Grid Based Movement Example",
 		Style::Titlebar);
 
 	// Initialise the fullscreen view
@@ -37,7 +37,6 @@ Engine::Engine()
 	
 	// create player
 	m_Grid.SetObject(0, 0, new Player(TextureHolder::GetTexture("graphics/player_down_01.png")));
-	
 	
 	// create exit
 	m_Grid.SetObject(8, 9, new GridSprite(TextureHolder::GetTexture("graphics/exit_locked.png"), GridObject::EXIT));

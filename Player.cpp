@@ -51,8 +51,6 @@ bool Player::input(const sf::Event& _event)
 			// (if boulder, push)
 			// (if boulder and can't push, don't move)
 			// (if diamond, collect)
-			if (targetCellObject == nullptr || targetCellObject->GetType() == GridObject::DIAMOND)
-				m_grid->MoveObject(m_gridX, m_gridY, targetX, targetY, true);
 			// (if closed exit, don't move)
 			// (if open exit, go to next level)
 
