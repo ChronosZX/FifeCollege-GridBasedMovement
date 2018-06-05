@@ -11,4 +11,3 @@ Diamond::Diamond(sf::Texture& _texture)
 {
 
 }
-

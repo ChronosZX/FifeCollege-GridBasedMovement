@@ -44,6 +44,8 @@ public:
 	const float CELL_WIDTH;
 	const float CELL_HEIGHT;
 
+
+
 private:
 
 	// 2 Dimmensional array to pointers to GridObjects
