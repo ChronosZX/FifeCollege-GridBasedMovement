@@ -13,4 +13,7 @@ public:
 
 	// Game Object Function
 	void update(const float& _dtAsSeconds) override;
+
+protected:
+	float counter = 0;
 };
