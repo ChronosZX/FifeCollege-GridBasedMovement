@@ -46,9 +46,13 @@ public:
 
 
 
+
 private:
 
 	// 2 Dimmensional array to pointers to GridObjects
 	GridObject*** m_GridArray;
 	sf::Vector2f m_GridPosition;
+
+	//checks to see if the player is on the board
+	bool doesPlayerExist; //create a getter in Engine and Boulder to make sure this works
 };

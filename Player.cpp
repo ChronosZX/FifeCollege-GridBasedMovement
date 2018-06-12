@@ -57,7 +57,15 @@ bool Player::input(const sf::Event& _event)
 				diamondsCollected += 1;
 			}
 			// (if closed exit, don't move)
+			if (targetCellObject != nullptr && targetCellObject->GetType() == GridObject::EXIT && !diamondsCollected == 3)
+			{
+				m_grid->MoveObject(m_gridX, m_gridY, targetX, targetY, false); //means we can't interact with the object without all 3 diamonds being collected
+			}
 			// (if open exit, go to next level)
+			if (targetCellObject != nullptr && targetCellObject->GetType() == GridObject::EXIT && diamondsCollected == 3)
+			{
+				m_grid->MoveObject(m_gridX, m_gridY, targetX, targetY, true);
+			}
 
 			// NOTE: This will automatically delete whatever GridObject is in the target cell!
 			if (targetCellObject == nullptr || targetCellObject->GetType() == GridObject::DIRT)

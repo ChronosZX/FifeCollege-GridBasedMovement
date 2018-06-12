@@ -3,6 +3,7 @@
 #include "GridSprite.h"
 #include "Player.h"
 
+
 class Exit : public GridSprite
 {
 public:
@@ -12,5 +13,9 @@ public:
 	Exit(sf::Texture& _texture, GridObject::Type _type = GridObject::EXIT);
 
 	// Game Object Function
-	//void update(const float& _dtAsSeconds) override;
+	void update(const float& _dtAsSeconds) override;
+
+	bool* exitOpen;
+
+
 };
