@@ -31,6 +31,9 @@ public:
 	void ClearReceivedInput() { m_receivedInput = false; }
 	bool HasRececeivedInput() { return m_receivedInput; }
 
+
+
+
 protected:
 
 	bool m_receivedInput;
@@ -38,4 +41,6 @@ protected:
 	int m_gridX;
 	int m_gridY;
 	Type m_type;
+
+
 };

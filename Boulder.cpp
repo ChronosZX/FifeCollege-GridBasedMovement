@@ -35,9 +35,8 @@ void Boulder::update(const float& _dtAsSeconds)
 		if (counter >= 0.5f)
 		{
 			// fall
-			m_grid->MoveObject(m_gridX, m_gridY++, targetX, targetY, false);
+			m_grid->MoveObject(m_gridX, m_gridY++, targetX, targetY, true);
 			counter = 0;
-			doesPlayer
 		}
 
 

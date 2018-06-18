@@ -1,13 +1,13 @@
 #pragma once
 
 #include "GridSprite.h"
+#include "Grid.h"
 
 // Player class
 // A GridSprite which can move around
 class Player : public GridSprite
 {
 public:
-
 	// Constructor
 	Player(sf::Texture& _texture);
 
@@ -15,6 +15,5 @@ public:
 	bool input(const sf::Event& _event) override;
 	
 	float diamondsCollected;
-
-
 };
+

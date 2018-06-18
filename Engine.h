@@ -3,6 +3,7 @@
 #include <SFML\Graphics.hpp>
 #include "TextureHolder.h"
 #include "Grid.h"
+#include "Player.h"
 
 class Engine
 {
@@ -16,6 +17,7 @@ private:
 	// The grid (will hold everything else)
 	Grid m_Grid;
 	Grid m_background;
+	Player* m_player;
 
 	// Private functions for internal use only:
 private:

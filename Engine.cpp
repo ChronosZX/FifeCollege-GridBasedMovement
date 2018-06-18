@@ -4,7 +4,7 @@
 #include "Player.h"
 #include "Diamond.h"
 #include "Boulder.h"
-
+#include "GridObject.h"
 
 using namespace sf;
 
@@ -36,7 +36,10 @@ Engine::Engine()
 	// similar to how Thomas Was Late levels were loaded!
 	
 	// create player
-	m_Grid.SetObject(0, 0, new Player(TextureHolder::GetTexture("graphics/player_down_01.png")));
+	m_player = new Player(TextureHolder::GetTexture("graphics/player_down_01.png"));
+	m_Grid.SetObject(0, 0, m_player);
+
+	
 	
 	
 	// create exit
@@ -66,10 +69,12 @@ Engine::Engine()
 	{
 		for (int y = 0; y < m_Grid.GRID_SIZE_Y; ++y)
 		{
-				m_background.SetObject(x, y, new GridSprite(TextureHolder::GetTexture("graphics/background_dirt.png"), GridObject::DIRT));
+			m_background.SetObject(x, y, new GridSprite(TextureHolder::GetTexture("graphics/background_dirt.png"), GridObject::DIRT));
 		}
 	}
 }
+
+
 
 
 
@@ -90,4 +95,5 @@ void Engine::run()
 		update(dtAsSeconds);
 		draw();
 	}
+
 }

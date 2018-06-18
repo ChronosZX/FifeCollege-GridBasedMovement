@@ -1,6 +1,8 @@
 #pragma once
 
+
 #include <SFML\Graphics.hpp>
+
 
 // GameObject
 // A simple class to be used with polymorphic 

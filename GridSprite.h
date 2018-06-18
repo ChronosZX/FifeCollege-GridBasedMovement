@@ -1,6 +1,7 @@
 #pragma once
 
 #include "GridObject.h"
+#include "Grid.h"
 #include <SFML/Graphics.hpp>
 
 // GridSprite class
@@ -19,6 +20,8 @@ public:
 	// GridObject Functions
 	virtual void SetGrid(Grid* _grid) override;
 	virtual void SetGridCoords(int _x, int _y) override;
+
+
 
 private:
 

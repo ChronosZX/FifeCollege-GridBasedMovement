@@ -101,6 +101,28 @@ void Grid::update(const float& _dtAsSeconds)
 				m_GridArray[x][y]->update(_dtAsSeconds);
 		}
 	}
+
+	doesPlayerExist = false;
+
+	for (int x = 0; x < GRID_SIZE_X; ++x)
+	{
+		for (int y = 0; y < GRID_SIZE_Y; ++y)
+		{
+			if (m_GridArray[x][y] != nullptr && m_GridArray[x][y]->GetType() == GridObject::PLAYER)
+			{
+				doesPlayerExist = true;
+			}
+		}
+	}
+
+	if (doesPlayerExist == false)
+	{
+		if (m_GridArray[0][0] == nullptr && m_GridArray[0][0]->GetType() != GridObject::PLAYER)
+		{
+			
+		}
+	}
+
 }
 
 // Draw - draws the object to the window each frame
@@ -197,4 +219,5 @@ void Grid::MoveObject(int _xOrigin, int _yOrigin,
 		// slot already
 		SetObject(_xNew, _yNew, toMove, _deleteExisting);
 	}
+
 }

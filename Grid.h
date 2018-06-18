@@ -44,7 +44,15 @@ public:
 	const float CELL_WIDTH;
 	const float CELL_HEIGHT;
 
+	bool GetPlayerExists()//getter
+	{
+		return doesPlayerExist;
+	}
 
+	void PlayerKilled(bool KilledPlayer) //setter
+	{
+		doesPlayerExist = KilledPlayer;
+	}
 
 
 private:
@@ -55,4 +63,5 @@ private:
 
 	//checks to see if the player is on the board
 	bool doesPlayerExist; //create a getter in Engine and Boulder to make sure this works
+
 };
