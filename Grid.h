@@ -59,7 +59,7 @@ private:
 	bool doesExitExist;
 
 	//level counter that lets the level you're on increase
-	int levelCounter = 1;
+	int levelCounter = 0;
 
 
 };

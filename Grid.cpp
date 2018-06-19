@@ -119,6 +119,7 @@ void Grid::update(const float& _dtAsSeconds)
 			{
 				doesPlayerExist = true; //player will stop existing when it is crushed
 			}
+
 		}
 	}
 
@@ -128,14 +129,21 @@ void Grid::update(const float& _dtAsSeconds)
 		{
 			if (m_GridArray[x][y] != nullptr && m_GridArray[x][y]->GetType() == GridObject::EXIT)
 			{
-				doesExitExist = true; //exit will stop existing when it's 
+				doesExitExist = true; //exit will stop existing when it's removed from the grid
 			}
 		}
 
 	}
 
+	if (doesExitExist == false)
+	{
+		levelCounter += 1;
+	}
+
 	if (doesPlayerExist == false || doesExitExist == false) //if either the player dies or the player touches the exit, this function will run
 	{
+
+
 
 		for (int x = 0; x < GRID_SIZE_X; ++x)
 		{
@@ -170,6 +178,7 @@ void Grid::update(const float& _dtAsSeconds)
 			// create boulders
 			SetObject(1, 3, new Boulder(TextureHolder::GetTexture("graphics/boulder.png")));
 			SetObject(7, 7, new Boulder(TextureHolder::GetTexture("graphics/boulder.png")));
+
 			if (levelCounter >= 2) // new boulders will be added with every level
 			{
 				SetObject(5, 6, new Boulder(TextureHolder::GetTexture("graphics/boulder.png")));
@@ -181,10 +190,17 @@ void Grid::update(const float& _dtAsSeconds)
 					if (levelCounter >= 4)
 					{
 						SetObject(2, 5, new Boulder(TextureHolder::GetTexture("graphics/boulder.png")));
+
 						if (levelCounter >= 5)
 						{
 							SetObject(9, 3, new Boulder(TextureHolder::GetTexture("graphics/boulder.png")));
+
+							if (levelCounter >= 6)
+							{
+								SetObject(3, 9, new Boulder(TextureHolder::GetTexture("graphics/boulder.png")));
+							}
 						}
+
 					}
 
 				}
@@ -200,11 +216,11 @@ void Grid::update(const float& _dtAsSeconds)
 						SetObject(x, y, new GridSprite(TextureHolder::GetTexture("graphics/dirt.png"), GridObject::DIRT));
 				}
 			}
-
-			levelCounter += 1;
 		}
 
 	}
+
+
 
 
 }
