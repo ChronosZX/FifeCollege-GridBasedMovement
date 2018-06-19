@@ -44,15 +44,6 @@ public:
 	const float CELL_WIDTH;
 	const float CELL_HEIGHT;
 
-	bool GetPlayerExists()//getter
-	{
-		return doesPlayerExist;
-	}
-
-	void PlayerKilled(bool KilledPlayer) //setter
-	{
-		doesPlayerExist = KilledPlayer;
-	}
 
 
 private:
@@ -62,6 +53,13 @@ private:
 	sf::Vector2f m_GridPosition;
 
 	//checks to see if the player is on the board
-	bool doesPlayerExist; //create a getter in Engine and Boulder to make sure this works
+	bool doesPlayerExist;
+
+	//checks to see if the exit exists
+	bool doesExitExist;
+
+	//level counter that lets the level you're on increase
+	int levelCounter = 1;
+
 
 };

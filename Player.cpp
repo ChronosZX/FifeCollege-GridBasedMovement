@@ -65,6 +65,7 @@ bool Player::input(const sf::Event& _event)
 			if (targetCellObject != nullptr && targetCellObject->GetType() == GridObject::EXIT && diamondsCollected == 3)
 			{
 				m_grid->MoveObject(m_gridX, m_gridY, targetX, targetY, true);
+			
 			}
 
 			// NOTE: This will automatically delete whatever GridObject is in the target cell!

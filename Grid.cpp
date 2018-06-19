@@ -1,9 +1,11 @@
 #include "stdafx.h"
 #include "Grid.h"
 #include "GridObject.h"
+#include "GridSprite.h"
 #include "Player.h"
 #include "Engine.h"
 #include "Diamond.h"
+#include "Boulder.h"
 
 
 // Constructor
@@ -107,6 +109,7 @@ void Grid::update(const float& _dtAsSeconds)
 	}
 
 	doesPlayerExist = false;
+	doesExitExist = false;
 
 	for (int x = 0; x < GRID_SIZE_X; ++x)
 	{
@@ -119,11 +122,29 @@ void Grid::update(const float& _dtAsSeconds)
 		}
 	}
 
-	if (doesPlayerExist == false)
+	for (int x = 0; x < GRID_SIZE_X; ++x)
 	{
-		if (m_GridArray[0][0] == nullptr && m_GridArray[0][0]->GetType() != GridObject::PLAYER)
+		for (int y = 0; y < GRID_SIZE_Y; ++y)
 		{
+			if (m_GridArray[x][y] != nullptr && m_GridArray[x][y]->GetType() == GridObject::EXIT)
+			{
+				doesExitExist = true;
+			}
+		}
 
+	}
+
+	if (doesPlayerExist == false || doesExitExist == false)
+	{
+
+		for (int x = 0; x < GRID_SIZE_X; ++x)
+		{
+			for (int y = 0; y < GRID_SIZE_Y; ++y)
+			{
+				SetObject(x, y, nullptr, true);
+			}
+		}
+		if (levelCounter >= 1) {
 			// create player
 			SetObject(0, 0, new Player(TextureHolder::GetTexture("graphics/player_down_01.png")));
 
@@ -131,14 +152,60 @@ void Grid::update(const float& _dtAsSeconds)
 			SetObject(8, 9, new GridSprite(TextureHolder::GetTexture("graphics/exit_locked.png"), GridObject::EXIT));
 
 			// create diamonds
-			SetObject(1, 4, new Diamond(TextureHolder::GetTexture("graphics/diamond.png")));
-			SetObject(1, 6, new Diamond(TextureHolder::GetTexture("graphics/diamond.png")));
-			SetObject(3, 2, new Diamond(TextureHolder::GetTexture("graphics/diamond.png")));
+			if (levelCounter == 1)
+			{
+				SetObject(1, 4, new Diamond(TextureHolder::GetTexture("graphics/diamond.png")));
+				SetObject(1, 6, new Diamond(TextureHolder::GetTexture("graphics/diamond.png")));
+				SetObject(3, 2, new Diamond(TextureHolder::GetTexture("graphics/diamond.png")));
+			}
+			if (levelCounter > 1)
+			{
+				SetObject(4, 2, new Diamond(TextureHolder::GetTexture("graphics/diamond.png")));
+				SetObject(6, 3, new Diamond(TextureHolder::GetTexture("graphics/diamond.png")));
+				SetObject(5, 7, new Diamond(TextureHolder::GetTexture("graphics/diamond.png")));
+			}
+
+
 
 			// create boulders
 			SetObject(1, 3, new Boulder(TextureHolder::GetTexture("graphics/boulder.png")));
+			SetObject(7, 7, new Boulder(TextureHolder::GetTexture("graphics/boulder.png")));
+			if (levelCounter >= 2)
+			{
+				SetObject(5, 6, new Boulder(TextureHolder::GetTexture("graphics/boulder.png")));
+
+				if (levelCounter >= 3)
+				{
+					SetObject(4, 5, new Boulder(TextureHolder::GetTexture("graphics/boulder.png")));
+
+					if (levelCounter >= 4)
+					{
+						SetObject(2, 5, new Boulder(TextureHolder::GetTexture("graphics/boulder.png")));
+						if (levelCounter >= 5)
+						{
+							SetObject(9, 3, new Boulder(TextureHolder::GetTexture("graphics/boulder.png")));
+						}
+					}
+
+				}
+			}
+
+
+
+			for (int x = 0; x < GRID_SIZE_X; ++x)
+			{
+				for (int y = 0; y < GRID_SIZE_Y; ++y)
+				{
+					if (GetOjbect(x, y) == nullptr)
+						SetObject(x, y, new GridSprite(TextureHolder::GetTexture("graphics/dirt.png"), GridObject::DIRT));
+				}
+			}
+
+			levelCounter += 1;
 		}
+
 	}
+
 
 }
 

@@ -37,6 +37,7 @@ void Boulder::update(const float& _dtAsSeconds)
 			// fall
 			m_grid->MoveObject(m_gridX, m_gridY++, targetX, targetY, true);
 			counter = 0;
+			
 		}
 
 
