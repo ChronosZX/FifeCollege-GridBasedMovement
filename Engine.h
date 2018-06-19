@@ -19,6 +19,8 @@ private:
 	Grid m_background;
 	Player* m_player;
 
+
+
 	// Private functions for internal use only:
 private:
 	void input();
@@ -28,6 +30,8 @@ private:
 public:
 	// The Engine Constructor
 	Engine();
+
+
 
 	// Run will call all the private functions
 	void run();

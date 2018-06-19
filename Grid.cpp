@@ -1,6 +1,10 @@
 #include "stdafx.h"
 #include "Grid.h"
 #include "GridObject.h"
+#include "Player.h"
+#include "Engine.h"
+#include "Diamond.h"
+
 
 // Constructor
 // Called when the grid is created
@@ -119,7 +123,20 @@ void Grid::update(const float& _dtAsSeconds)
 	{
 		if (m_GridArray[0][0] == nullptr && m_GridArray[0][0]->GetType() != GridObject::PLAYER)
 		{
-			
+
+			// create player
+			SetObject(0, 0, new Player(TextureHolder::GetTexture("graphics/player_down_01.png")));
+
+			// create exit
+			SetObject(8, 9, new GridSprite(TextureHolder::GetTexture("graphics/exit_locked.png"), GridObject::EXIT));
+
+			// create diamonds
+			SetObject(1, 4, new Diamond(TextureHolder::GetTexture("graphics/diamond.png")));
+			SetObject(1, 6, new Diamond(TextureHolder::GetTexture("graphics/diamond.png")));
+			SetObject(3, 2, new Diamond(TextureHolder::GetTexture("graphics/diamond.png")));
+
+			// create boulders
+			SetObject(1, 3, new Boulder(TextureHolder::GetTexture("graphics/boulder.png")));
 		}
 	}
 
