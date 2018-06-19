@@ -117,7 +117,7 @@ void Grid::update(const float& _dtAsSeconds)
 		{
 			if (m_GridArray[x][y] != nullptr && m_GridArray[x][y]->GetType() == GridObject::PLAYER)
 			{
-				doesPlayerExist = true;
+				doesPlayerExist = true; //player will stop existing when it is crushed
 			}
 		}
 	}
@@ -128,23 +128,23 @@ void Grid::update(const float& _dtAsSeconds)
 		{
 			if (m_GridArray[x][y] != nullptr && m_GridArray[x][y]->GetType() == GridObject::EXIT)
 			{
-				doesExitExist = true;
+				doesExitExist = true; //exit will stop existing when it's 
 			}
 		}
 
 	}
 
-	if (doesPlayerExist == false || doesExitExist == false)
+	if (doesPlayerExist == false || doesExitExist == false) //if either the player dies or the player touches the exit, this function will run
 	{
 
 		for (int x = 0; x < GRID_SIZE_X; ++x)
 		{
 			for (int y = 0; y < GRID_SIZE_Y; ++y)
 			{
-				SetObject(x, y, nullptr, true);
+				SetObject(x, y, nullptr, true); //sets everything to nullptr when the level resets to prevent duplication on player death
 			}
 		}
-		if (levelCounter >= 1) {
+		if (levelCounter >= 1) { //the base locations of all objects that will stay the same when the level is loading
 			// create player
 			SetObject(0, 0, new Player(TextureHolder::GetTexture("graphics/player_down_01.png")));
 
@@ -158,7 +158,7 @@ void Grid::update(const float& _dtAsSeconds)
 				SetObject(1, 6, new Diamond(TextureHolder::GetTexture("graphics/diamond.png")));
 				SetObject(3, 2, new Diamond(TextureHolder::GetTexture("graphics/diamond.png")));
 			}
-			if (levelCounter > 1)
+			if (levelCounter > 1) //diamonds will have a new location after the first level
 			{
 				SetObject(4, 2, new Diamond(TextureHolder::GetTexture("graphics/diamond.png")));
 				SetObject(6, 3, new Diamond(TextureHolder::GetTexture("graphics/diamond.png")));
@@ -170,7 +170,7 @@ void Grid::update(const float& _dtAsSeconds)
 			// create boulders
 			SetObject(1, 3, new Boulder(TextureHolder::GetTexture("graphics/boulder.png")));
 			SetObject(7, 7, new Boulder(TextureHolder::GetTexture("graphics/boulder.png")));
-			if (levelCounter >= 2)
+			if (levelCounter >= 2) // new boulders will be added with every level
 			{
 				SetObject(5, 6, new Boulder(TextureHolder::GetTexture("graphics/boulder.png")));
 

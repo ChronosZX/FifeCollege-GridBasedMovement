@@ -48,8 +48,6 @@ bool Player::input(const sf::Event& _event)
 			GridObject* targetCellObject = m_grid->GetOjbect(targetX, targetY);
 
 			// TODO: perform special actions based on content of target cell
-			// (if boulder, push)
-			// (if boulder and can't push, don't move)
 			// (if diamond, collect)
 			if (targetCellObject != nullptr && targetCellObject->GetType() == GridObject::DIAMOND)
 			{
@@ -61,7 +59,7 @@ bool Player::input(const sf::Event& _event)
 			{
 				m_grid->MoveObject(m_gridX, m_gridY, targetX, targetY, false); //means we can't interact with the object without all 3 diamonds being collected
 			}
-			// (if open exit, go to next level)
+			// when diamonds collected = 3, the player will be able to move onto the exit object and code in the Grid.cpp will move onto the next level
 			if (targetCellObject != nullptr && targetCellObject->GetType() == GridObject::EXIT && diamondsCollected == 3)
 			{
 				m_grid->MoveObject(m_gridX, m_gridY, targetX, targetY, true);

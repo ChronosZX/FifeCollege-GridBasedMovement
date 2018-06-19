@@ -14,6 +14,7 @@ public:
 	// Game Object Functions
 	bool input(const sf::Event& _event) override;
 	
+private:
 	int diamondsCollected;
 };
 
